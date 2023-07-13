@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Crea tu tabla dinamica</title>
+</head>
+<body id="body">
+    <h2>Ingresa el numero de filas:</h2>
+    <input type="number" id="filas" required>
+    <h2>Ingresa el numero de columnas</h2>
+    <input type="number" id="columnas">
+    <button onclick="crearTabla()">Crear Tabla</button>
+</body>
+<script>
+
+    function crearTabla() {
+    
+    let filas = document.getElementById('filas').value
+    let columnas = document.getElementById('columnas').value
+    var body = document.getElementsByTagName('body')[0]
+    var tabla   = document.createElement('table')
+    var tblBody = document.createElement('tbody')
+    for (var i = 0; i < filas; i++) {
+    
+    var hilera = document.createElement('tr');
+
+    for (var j = 0; j < columnas; j++) {
+      var celda = document.createElement("td");
+      var textoCelda = document.createTextNode("celda en la fila "+i+", columna "+j);
+      celda.appendChild(textoCelda);
+      hilera.appendChild(celda);
+    }
+    tblBody.appendChild(hilera);
+  }
+
+  tabla.appendChild(tblBody);
+  body.appendChild(tabla);
+  tabla.setAttribute("bgcolor", "gray");
+  tabla.setAttribute("border", "1");
+}
+</script>
+</html>
